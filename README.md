@@ -33,15 +33,12 @@ En este trabajo, se implementaron filtros digitales (Butterworth), la transforma
 
 ## Montaje
 ---
-Se implementó un montaje en el que se utilizaron tres micrófonos con una frecuencia de muestreo de 44 kHz, asegurada por la aplicación RecForge II. Las tres personas encargadas de emitir las voces se ubicaron en sillas a diferentes distancias respecto a los micrófonos, que estuvieron colocados en el mismo punto. Como primer paso, se realizó una grabación del ruido ambiente, que fue mínimo gracias a que el experimento se llevó a cabo en un cuarto insonorizado, cuyo objetivo es minimizar la reflexión del sonido. Después, cada persona recitó un trabalenguas, el cual fue captado por los micrófonos. Estos audios se guardaron y usaron como archivos .wav. 
+Se empleó una placa STM32F103C8T8 como plataforma de adquisición de datos. Un sensor AD8232, conectado a la placa, se encargó de captar la actividad eléctrica del músculo y convertirla en una señal digital a través de una conversión analógica-digital. Electrodos superficiales se adhirieron al brazo del sujeto para registrar la señal EMG durante la realización de contracciones isométricas apretando y soltando una pelota anti-estrés. Los datos obtenidos fueron almacenados en formato .txt y posteriormente procesados.
 
-Audio que grabó el micrófono 2: [SoundCloud audio player](https://on.soundcloud.com/6zYvVz5bun4SVdD1A)
-Ruido que grabó el micrófono 2: [SoundCloud audio player](https://on.soundcloud.com/xyzhEwwts82rAUCS9)
-
-<br />
 <div align="center">
- <img src="MONTAJE.jpeg" alt="Montaje" width="250" height="250">
+ <img src="AN.jpg" alt="antiestres" width="300" height="300">
 </div>
+
 
 
 
