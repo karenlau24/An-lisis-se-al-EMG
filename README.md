@@ -56,22 +56,121 @@ tiempo = datos[:, 0]
 voltaje = datos[:, 1]  
 
 ```
-### Paso 2: Mezclar las señales, para poder utilizar ICA (Análisis de componentes independientes)
+### Paso 2: Definir frecuencia de muestreo (fs)
+<br />
+
+Se establece una frecuencia de muestreo de 2000 Hz para garantizar la captura adecuada de las características de la señal. Este valor se selecciona considerando el teorema de Nyquist y permite un margen de seguridad para el diseño de los filtros, los cuales operarán a la mitad de esta frecuencia.
+```
+fs = 2000
+```
+
+### Paso 3: Filtrado (Funciones Butterworth)
+<br />
+
+Se definen tres funciones con las que se diseñará el filtro final por el que se pasará la señal para ser procesada. De los filtros Butterworth es posible obtener los coeficientes correspondientes, los cuales ayudan a definir factores como la ganancia, la estabilidad y la respuesta. Se obtienen cuatro coeficientes, dos para cada filtro (pasa-bajas y pasa-altas). Luego, se construyen en su totalidad los filtros finales, definiendo la frecuencia de corte para el pasa-altas (200 Hz) y la frecuencia de corte para el pasa-bajas (300 Hz). Asimismo, ambos filtros son de orden 4, lo cual garantiza una atenuación adecuada de las frecuencias no deseadas.
 
 ```
-audio_mezclado = pim_recortado + pum_recortado + pam_recortado
+def pasabaja(cutoff, fs, order=5):
+    nyquist = 0.5 * fs 
+    normal_cutoff = cutoff / nyquist
+    b, a = butter(order, normal_cutoff, btype='low', analog=False)
+    return b, a
+
+def pasaalta(cutoff, fs, order=5):
+    nyquist = 0.5 * fs 
+    normal_cutoff = cutoff / nyquist
+    b, a = butter(order, normal_cutoff, btype='high', analog=False)
+    return b, a
+
+def filtros(data, fs):
+   
+    fc_alta = 200 
+    fc_baja = 300  
+    
+    b_high, a_high = pasaalta(fc_alta, fs, order=4)
+    b_low, a_low = pasabaja(fc_baja, fs, order=4)
+    
+    # Pasa alta
+    
+    filtrada = filtfilt(b_high, a_high, data)
+    
+    # Pasa baja
+    
+    filtrada = filtfilt(b_low, a_low, filtrada)
+    
+    return filtrada
+
 ```
 
-### Paso 3: Aplicar el ICA
+
+### Paso 4: Análisis por FFT
+
+En esta primera parte, se utiliza la técnica de ventana de Hamming, la cual consiste en una técnica que permite tomar segmentos de la señal y multiplicarlos por la "Ventana de Hanning", la cual, es una función matemática que permite segmentar y suavizar la señal, esto es útil para realizar luego la FFT. 
 
 ```
-ica = FastICA(n_components=3)
-sources = ica.fit_transform(audio_mezclado.reshape(-1, 1))
+def hanning(data, window_size, fs):
+    
+    n = len(data)
+    ventana = np.hanning(window_size)
+    datos_aventanados = []
+
+    
+    for i in range(0, n - window_size, window_size):
+        
+        segmento = data[i:i+window_size]
+        segmento_aventanado = segmento * ventana
+        datos_aventanados.append(segmento_aventanado)
+
+    
+    datos_aventanados = np.concatenate(datos_aventanados)
+    
+    return datos_aventanados
 ```
-### Paso 4: Seleccionar la fuente (voz) que se desea filtrar
+Luego de haber suavizado la señal, es necesario separar y elegir los segmentos de la señal que son distintos de cero, ya que estos son los que se van a analizar. Esto se debe a que, por lo general, los segmentos nulos corresponden a información no deseada (ruido o partes no relevantes de la señal). De esta manera, el análisis FFT es más detallado y confiable. Al final de esta función, se devuelven solo los segmentos no nulos.
+
+<br />
 
 ```
-voz_filtrada = sources[:, 0]
+def distinto_de_cero(data_aventanada):
+    segmentos = []
+    segmento_actual = []
+    
+    for i in range(len(data_aventanada)):
+        if data_aventanada[i] != 0:
+            segmento_actual.append(data_aventanada[i])
+        else:
+            if len(segmento_actual) > 0:
+                segmentos.append(np.array(segmento_actual))
+                segmento_actual = []
+    
+    if len(segmento_actual) > 0:
+        segmentos.append(np.array(segmento_actual))
+    
+    return segmentos
+
+```
+<br />
+
+Finalmente, se aplica la Transformada Rápida de Fourier (FFT), la cual permite visualizar la distribución de las frecuencias en cada segmento de la señal (un total de 7). Al aplicar la función FFT, se obtienen las transformadas discretas de Fourier en numerosas divisiones, lo que posibilita transformar cada segmento del dominio del tiempo al dominio de la frecuencia. Es fundamental calcular el módulo (magnitud) de los resultados, dado que esta operación puede generar números complejos.
+
+```
+
+def fft_segmentos(segmentos, fs):
+    for i, segmento in enumerate(segmentos):
+        espectro = np.abs(fft(segmento))
+        frecuencias = np.fft.fftfreq(len(segmento), d=1/fs)
+        plt.figure(figsize=(10, 6), facecolor='blanchedalmond') 
+        plt.plot(frecuencias[:len(segmento) // 2], espectro[:len(segmento) // 2], 
+         label=f'FFT del Segmento {i+1}', 
+         color='goldenrod', linewidth=2, linestyle='-')  
+        plt.title('Espectro de Frecuencias', fontsize=16, fontweight='bold')
+        plt.xlabel('Frecuencia (Hz)', fontsize=16)
+        plt.ylabel('Magnitud', fontsize=16)
+        plt.grid(color='gray', linestyle=':', linewidth=0.5)  
+        plt.legend(loc='upper right', fontsize=12, frameon=False)
+        plt.tight_layout()
+        plt.show()
+
 ```
 
 ### Paso 5: Aplicar filtro pasabanda para mejorar la señal 
