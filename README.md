@@ -9,6 +9,12 @@ En el área de la ingeniería biomédica, es fundamental conocer a fondo los dis
 
 El objetivo de este algoritmo es procesar la señal EMG, eliminando el ruido y realizando un análisis espectral detallado. De esta manera, es posible obtener información precisa sobre la frecuencia y amplitud de las contracciones musculares, lo cual es fundamental para diversas aplicaciones médicas y de investigación.
 
+<br />
+
+<div align="center">
+ <img src="EMG.jpg" alt="emg" width="300" height="300">
+</div>
+
 
 
 ## Tabla de contenidos:
