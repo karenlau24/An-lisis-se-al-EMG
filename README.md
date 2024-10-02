@@ -44,18 +44,14 @@ Se empleó una placa STM32F103C8T8 como plataforma de adquisición de datos. Un 
 
 ## Procesamiento
 ---
-### Paso 1: Leer las señales de audio
+### Paso 1: Leer la señal .txt
+# En esta primera parte, se leen los datos guardados en el archivo .txt. Se guardan y se dividen en dos arreglos adicionales: (Voltaje) y (Frecuencia), permitiendo así graficarlos posteriormente. 
 ```
-import soundfile as sn
 
-...
+datos = np.loadtxt('karen_y_pau.txt', delimiter=',')
+tiempo = datos[:, 0]  
+voltaje = datos[:, 1]  
 
-pim, Fs1 = sn.read('AUDIO_1.wav')
-pum, Fs2 = sn.read('AUDIO_2.wav')
-pam, Fs3 = sn.read('AUDIO_3.wav')
-pim1, Fr1 = sn.read('RUIDO_1.wav')
-pum2, Fr2 = sn.read('RUIDO_2.wav')
-pam3, Fr3 = sn.read('RUIDO_3.wav')
 ```
 ### Paso 2: Mezclar las señales, para poder utilizar ICA (Análisis de componentes independientes)
 
