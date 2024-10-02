@@ -45,7 +45,10 @@ Se empleó una placa STM32F103C8T8 como plataforma de adquisición de datos. Un 
 ## Procesamiento
 ---
 ### Paso 1: Leer la señal .txt
-# En esta primera parte, se leen los datos guardados en el archivo .txt. Se guardan y se dividen en dos arreglos adicionales: (Voltaje) y (Frecuencia), permitiendo así graficarlos posteriormente. 
+
+<br />
+
+Se cargan los datos del archivo .txt y se separan en dos arreglos: voltaje y tiempo. Estos arreglos servirán como entrada para el análisis posterior.
 ```
 
 datos = np.loadtxt('karen_y_pau.txt', delimiter=',')
