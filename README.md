@@ -244,6 +244,17 @@ Al obtener un una grafica de espectro de frecuencias por cada segmento, se eligi
 
 En las tres gráficas se observa una frecuencia dominante cercana a los 200 Hz, lo cual es coherente con los valores típicos reportados en la literatura para señales EMG. A pesar de que esta frecuencia dominante se mantiene relativamente constante a lo largo del tiempo, se aprecia una ligera disminución en la magnitud de las frecuencias superiores a los 200 Hz. Aunque este cambio es sutil, podría indicar los inicios de la fatiga muscular. Sin embargo, dado que el sujeto no experimentó una fatiga extrema y repitió el ejercicio de contracción y relajación varias veces, la disminución en la amplitud de las altas frecuencias no es muy pronunciada.
 
+> Segmentos aventanados
+
+Finalmente, la siguiente figura presenta una representación gráfica de cada segmento de la señal, una vez aplicado el ventaneo. En este gráfico, se establece una relación entre el voltaje, que es una medida de la energía eléctrica muscular, y el tiempo. Esto permite visualizar la evolución de la energía de las contracciones a lo largo del tiempo.
+<br />
+
+<div align="center">
+ <img src="aventanadas.png" alt="filtros" width="800" height="600">
+</div>
+
+<br/>
+
 ### Aplicaciones
 
 La biomedicina ha experimentado una revolución gracias al avance de las tecnologías de procesamiento de señales. Al aplicar técnicas sofisticadas de filtrado y análisis a los datos biológicos, los investigadores y médicos pueden obtener una visión más profunda de las enfermedades y desarrollar tratamientos más efectivos. Desde la detección temprana del cáncer hasta la mejora de la calidad de vida de pacientes con enfermedades crónicas, estas herramientas están transformando la forma en que entendemos y tratamos las enfermedades.
