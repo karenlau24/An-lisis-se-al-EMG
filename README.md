@@ -277,7 +277,34 @@ Media del Segmento 7: 3.0792984529691326e-07
 ```
 Al comparar la media del segmento tres con su espectro de frecuencia, se observa una concordancia significativa, lo que sugiere una disminución en la actividad muscular, posiblemente debido a la fatiga. No obstante, este patrón se revierte en el segmento cuatro, donde se aprecia un incremento en la media, indicando una recuperación parcial de la fuerza de contracción. Esto podría explicarse por una disminución momentánea en la fuerza ejercida por el sujeto durante la adquisición de los datos del segmento tres. 
 
-Tal como se indicó previamente, el sujeto no experimentó fatiga muscular durante el periodo de análisis. Este resultado puede atribuirse a la reducida resistencia ofrecida por la pelota anti estrés, la cual no generó una carga de trabajo suficiente para inducir fatiga muscular en el brazo durante el tiempo de adquisición de los datos.
+Tal como se indicó anteriormente, el sujeto no experimentó una fatiga muscular significativa durante el periodo de análisis. La reducida resistencia de la pelota anti estrés no generó una carga de trabajo lo suficientemente elevada para inducir fatiga muscular en el brazo. No obstante, la disminución observada en la media del segmento 7 podría indicar una disminución leve en la capacidad de contracción muscular, sugiriendo un posible inicio de fatiga.
+
+> Prueba de hipótesis
+
+Para comprobar si existían diferencias significativas entre las medias de los distintos segmentos de la señal, se realizó un análisis de varianza (ANOVA). Este análisis nos permitió determinar si las variaciones observadas eran producto del azar o si, por el contrario, había diferencias reales entre los grupos. Si el valor p obtenido en el ANOVA resultó ser menor a 0.05, se concluyó que al menos una de las medias era diferente, rechazando así la hipótesis de que todas las medias eran iguales. El código aplicado es el siguiente: 
+
+```
+resultados_anova = f_oneway(*segmentos)
+
+
+print(f'Estadístico F: {resultados_anova.statistic}')
+print(f'Valor p: {resultados_anova.pvalue}')
+
+alpha = 0.05
+if resultados_anova.pvalue < alpha:
+    print("Se rechaza la hipótesis nula: hay diferencias significativas entre las medias de los segmentos.")
+else:
+    print("No se rechaza la hipótesis nula: no hay diferencias significativas entre las medias de los segmentos.")
+
+```
+Luego, al correr el programa se observa el siguiente resultado: 
+
+```
+No se rechaza la hipótesis nula: no hay diferencias significativas entre las medias de los segmentos.
+
+```
+
+
 
 ### Aplicaciones
 
