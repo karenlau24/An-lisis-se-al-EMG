@@ -12,7 +12,7 @@ Este algoritmo es capaz de procesar la señal EMG, eliminando el ruido y realiza
 <br />
 
 <div align="center">
- <img src="EMG.jpg" alt="emg" width="800" height="800">
+ <img src="EMG.jpg" alt="emg" width="300" height="300">
 </div>
 
 
@@ -215,7 +215,7 @@ def graficar_segmentos(segmentos, fs):
 La figura muestra la señal original, caracterizada por ruido y picos indeseados, y una amplitud máxima considerable. En la parte central se observa la señal filtrada, donde se aprecia una disminución notable del ruido, evidenciada por la ausencia de cambios abruptos entre los picos y una reducción en la amplitud máxima. Este procesamiento permite centrarnos en las frecuencias medias, esenciales para un análisis detallado de la actividad muscular. Finalmente, la tercera gráfica corresponde a la señal con ventana, que exhibe una amplitud aún menor debido al efecto suavizante de las ventanas. Este paso adicional enfatiza la actividad muscular relevante y prepara la señal para su posterior análisis mediante la Transformada Rápida de Fourier (FFT).
 
 <div align="center">
- <img src="imagen1.png" alt="filtros" width="300" height="300">
+ <img src="imagen1.png" alt="filtros" width="800" height="600">
 </div>
 
 > Análisis temporal y espectral
