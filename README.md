@@ -212,15 +212,36 @@ def graficar_segmentos(segmentos, fs):
 
 > Filtrado de la señal
 
-La figura muestra la señal original, caracterizada por ruido y picos indeseados, y una amplitud máxima considerable. En la parte central se observa la señal filtrada, donde se aprecia una disminución notable del ruido, evidenciada por la ausencia de cambios abruptos entre los picos y una reducción en la amplitud máxima. Este procesamiento permite centrarnos en las frecuencias medias, esenciales para un análisis detallado de la actividad muscular. Finalmente, la tercera gráfica corresponde a la señal con ventana, que exhibe una amplitud aún menor debido al efecto suavizante de las ventanas. Este paso adicional enfatiza la actividad muscular relevante y prepara la señal para su posterior análisis mediante la Transformada Rápida de Fourier (FFT).
+La figura muestra la señal original, caracterizada por ruido y picos indeseados, y una amplitud máxima considerable. En la parte central se observa la señal filtrada, donde se aprecia una disminución notable del ruido, evidenciada por la ausencia de cambios abruptos entre los picos y una reducción en la amplitud máxima. Este procesamiento permite centrarnos en las frecuencias medias, esenciales para un análisis detallado de la actividad muscular. Finalmente, la tercera gráfica corresponde a la señal con ventana, que exhibe una amplitud aún menor debido al efecto suavizante de las ventanas. Este paso adicional enfatiza la actividad muscular relevante y prepara la señal para su posterior análisis mediante la Transformada Rápida de Fourier (FFT). 
+
+El ruido presente podría deberse a que el sensor AD8232 no está diseñado específicamente para señales EMG, sino para ECG. Por lo tanto, su configuración interna podría permitir el paso de frecuencias no deseadas. Además, el hecho de que los electrodos fueran superficiales y que el sujeto se moviera durante la adquisición de datos contribuyó significativamente a la presencia de ruido.
 
 <div align="center">
  <img src="imagen1.png" alt="filtros" width="800" height="600">
 </div>
 
-> Análisis temporal y espectral
+> Espectro de frecuencias 
 
-El análisis temporal de la señal indica la variación de la misma a lo largo del tiempo, entonces, permite identificar la presencia de ruido y la observación del patrón que siguen las voces, esto teniendo en cuenta que en todas las grabaciones, las personas están diciendo las mismas cosas. Por otro lado, en el análisis espectral se pueden identificar las frecuencias predominantes de la señal.
+Al obtener un una grafica de espectro de frecuencias por cada segmento, se eligieron tres segmentos para analizar, y poder llegar a una conclusión, los segmentos elegidos fueron el primero, el de la mitad (tercero), y el último (séptimo). Las gráficas se observan a continuación: 
+
+<div align="center">
+ <img src="segmento1.png" alt="filtros" width="800" height="600">
+</div>
+
+<br />
+
+<div align="center">
+ <img src="segmento3.png" alt="filtros" width="800" height="600">
+</div>
+
+<br />
+
+<div align="center">
+ <img src="segmento7.png" alt="filtros" width="800" height="600">
+</div>
+
+<br/>
+
 
 ### Aplicaciones
 
