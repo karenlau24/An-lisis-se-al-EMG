@@ -33,7 +33,7 @@ En este trabajo, se implementaron filtros digitales (Butterworth), la transforma
 
 ## Montaje
 ---
-Se empleó una placa STM32F103C8T8 como plataforma de adquisición de datos. Un sensor AD8232, conectado a la placa, se encargó de captar la actividad eléctrica del músculo y convertirla en una señal digital a través de una conversión analógica-digital. Electrodos superficiales se adhirieron al brazo del sujeto para registrar la señal EMG durante la realización de contracciones isométricas apretando y soltando una pelota anti-estrés. Los datos obtenidos fueron almacenados en formato .txt y posteriormente procesados.
+Se empleó una placa STM32F103C8T8 como plataforma de adquisición de datos para registrar la actividad eléctrica del músculo profundo flexor de los dedos. Un sensor AD8232, conectado a la placa, se encargó de captar la señal EMG y convertirla en una señal digital a través de una conversión analógica-digital. Electrodos superficiales se adhirieron al brazo del sujeto para registrar la señal EMG durante la realización de contracciones isométricas apretando y soltando una pelota anti-estrés. Los datos obtenidos fueron almacenados en formato .txt y posteriormente procesados
 
 <div align="center">
  <img src="AN.jpg" alt="antiestres" width="300" height="300">
@@ -254,30 +254,55 @@ Finalmente, la siguiente figura presenta una representación gráfica de cada se
 
 <br/>
 
-> Media de los segmentos
+> Estadística de los segmentos
 
-Tras realizar el cálculo de la media de los segmentos, la cual, es capaz de brindarnos información en cuanto a la fátiga muscular, se obtiene lo siguiente: 
-
-```
-
-Media del Segmento 1: -1.5958475663812007e-05
-
-Media del Segmento 2: 3.2903944289091065e-06
-
-Media del Segmento 3: -1.8065319725535814e-07
-
-Media del Segmento 4: 3.7231086002032916e-06
-
-Media del Segmento 5: 2.2974969377265e-06
-
-Media del Segmento 6: 3.941949630928005e-06
-
-Media del Segmento 7: 3.0792984529691326e-07
+Tras realizar el cálculo de la media, mediana y desviación estándar de los segmentos, se puede extraer información en cuanto a la fátiga muscular, se obtiene lo siguiente: 
 
 ```
-Al comparar la media del segmento tres con su espectro de frecuencia, se observa una concordancia significativa, lo que sugiere una disminución en la actividad muscular, posiblemente debido a la fatiga. No obstante, este patrón se revierte en el segmento cuatro, donde se aprecia un incremento en la media, indicando una recuperación parcial de la fuerza de contracción. Esto podría explicarse por una disminución momentánea en la fuerza ejercida por el sujeto durante la adquisición de los datos del segmento tres. 
 
-Tal como se indicó anteriormente, el sujeto no experimentó una fatiga muscular significativa durante el periodo de análisis. La reducida resistencia de la pelota anti estrés no generó una carga de trabajo lo suficientemente elevada para inducir fatiga muscular en el brazo. No obstante, la disminución observada en la media del segmento 7 podría indicar una disminución leve en la capacidad de contracción muscular, sugiriendo un posible inicio de fatiga.
+Segmento 1:
+   Media: -1.5958475663812007e-05
+   Mediana: -0.0002549212410906873
+   Desviación estándar: 2.037227547033844
+
+Segmento 2:
+   Media: 3.2903944289091065e-06
+   Mediana: 0.0002688583025762743
+   Desviación estándar: 1.5663854234769161
+
+Segmento 3:
+   Media: -1.8065319725535814e-07
+   Mediana: -8.851329330770554e-05
+   Desviación estándar: 1.2962847319673492
+
+Segmento 4:
+   Media: 3.7231086002032916e-06
+   Mediana: 0.0003305231014526877
+   Desviación estándar: 1.5915748538961916
+
+Segmento 5:
+   Media: 2.2974969377265e-06
+   Mediana: -0.0012085095304702974
+   Desviación estándar: 1.4429970787094695
+
+Segmento 6:
+   Media: 3.941949630928005e-06
+   Mediana: -8.516419982677684e-05
+   Desviación estándar: 1.5360089074713423
+
+Segmento 7:
+   Media: 3.0792984529691326e-07
+   Mediana: -0.00014122902193911457
+   Desviación estándar: 1.9963664216191837
+
+```
+Al comparar la media del segmento tres con su espectro de frecuencia, se observa una concordancia significativa, lo que sugiere una disminución en la actividad muscular, posiblemente debido a la fatiga. Sin embargo, este patrón se revierte en el segmento cuatro, donde se aprecia un incremento en la media, indicando una recuperación parcial de la fuerza de contracción. Esta variabilidad podría explicarse por una disminución momentánea en la fuerza ejercida por el sujeto durante la adquisición de los datos del segmento tres.
+
+Asimismo, al analizar la mediana, también se observa una disminución en el segmento tres. Esto sugiere que el sujeto pudo haber realizado una fuerza menor al apretar la pelota en este período. Por último, el aumento de la desviación estándar indica una mayor dispersión de los datos, lo que podría deberse a una mayor activación de unidades motoras. Esta pérdida de control estable es un indicio de un posible inicio de fatiga.
+
+Tal como se indicó anteriormente, el sujeto no experimentó fatiga muscular significativa durante el período de análisis. La baja resistencia de la pelota anti estrés no generó una carga de trabajo suficiente para inducir fatiga muscular en el brazo. No obstante, la disminución observada en la media del segmento siete podría indicar una disminución leve en la capacidad de contracción muscular, sugiriendo un posible inicio de fatiga.
+
+```
 
 > Prueba de hipótesis
 
