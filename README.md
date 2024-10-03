@@ -12,7 +12,7 @@ Este algoritmo es capaz de procesar la señal EMG, eliminando el ruido y realiza
 <br />
 
 <div align="center">
- <img src="EMG.jpg" alt="emg" width="300" height="300">
+ <img src="EMG.jpg" alt="emg" width="800" height="800">
 </div>
 
 
