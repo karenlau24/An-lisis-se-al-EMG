@@ -164,7 +164,13 @@ fft_segmentos(segmentos, fs)
 def calcular_media_segmentos(segmentos):
     for i, segmento in enumerate(segmentos):
         media = np.mean(segmento)
-        print(f'Media del Segmento {i+1}: {media}')
+        mediana = np.median(segmento)
+        desviacion_std = np.std(segmento)
+        print(f'Segmento {i+1}:')
+        print(f'   Media: {media}')
+        print(f'   Mediana: {mediana}')
+        print(f'   Desviación estándar: {desviacion_std}\n')
+
 
 
 # Función para graficar los segmentos no nulos
