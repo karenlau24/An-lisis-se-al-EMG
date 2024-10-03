@@ -210,22 +210,13 @@ def graficar_segmentos(segmentos, fs):
 ## Resultados
 ---
 
-> SNR
+> Filtrado de la señal
 
-Al momento de realizar el cálculo de las señales con sus respectivos ruidos, los resultados obtenidos fueron los siguientes: 
+La figura muestra la señal original, caracterizada por ruido y picos indeseados, y una amplitud máxima considerable. En la parte central se observa la señal filtrada, donde se aprecia una disminución notable del ruido, evidenciada por la ausencia de cambios abruptos entre los picos y una reducción en la amplitud máxima. Este procesamiento permite centrarnos en las frecuencias medias, esenciales para un análisis detallado de la actividad muscular. Finalmente, la tercera gráfica corresponde a la señal con ventana, que exhibe una amplitud aún menor debido al efecto suavizante de las ventanas. Este paso adicional enfatiza la actividad muscular relevante y prepara la señal para su posterior análisis mediante la Transformada Rápida de Fourier (FFT).
 
-```
-El SNR entre la señal de audio 1 y el ruido 1 es: 32.80 dB
-El SNR entre la señal de audio 2 y el ruido 2 es: 44.29 dB
-El SNR entre la señal de audio 3 y el ruido 3 es: 27.14 dB
-El SNR entre Vocecita y el ruido 1 es: 33.48 dB
-El SNR entre Vocecita y el ruido 2 es: 48.81 dB
-El SNR entre Vocecita y el ruido 3 es: 31.89 dB
-```
-Siendo Vocecita la mezcla de las tres señales adquiridas. 
-
-El análisis de los valores de SNR revela que tanto el filtrado pasabanda como el Análisis de Componentes Independientes (ICA) han contribuido a mejorar sustancialmente la calidad de la señal de audio. El filtrado ha eliminado las frecuencias no deseadas, mientras que ICA ha permitido separar de manera efectiva las fuentes de audio mezcladas. La señal resultante presenta una relación señal-ruido significativamente mayor, lo que indica una reducción efectiva del ruido y una mayor claridad en la señal de voz. Así mismo, el aumento del SNR después del procesamiento indica que la señal de voz filtrada es menos susceptible a interferencias y, por lo tanto, más adecuada para aplicaciones posteriores, como el reconocimiento de voz o la compresión de audio. Los resultados obtenidos demuestran la eficacia de las técnicas empleadas para mejorar la calidad de la señal.
-
+<div align="center">
+ <img src="imagen1.png" alt="filtros" width="300" height="300">
+</div>
 
 > Análisis temporal y espectral
 
