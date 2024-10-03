@@ -173,9 +173,9 @@ def fft_segmentos(segmentos, fs):
 
 ```
 
-### Paso 5: Gráficar cada segmento y cálcular su media
+### Paso 5: Gráficar cada segmento y cálcular sus medidas estadísticas
 
-Finalmente, una vez dividida la señal en segmentos, se calcula la media de cada uno. Esto con el objetivo de analizar el comportamiento de la señal a medida que el músculo se fatiga. Además, se genera una gráfica para cada segmento obtenido.
+Finalmente, una vez dividida la señal en segmentos, se calcula la media, mediana y desviación de cada uno. Esto con el objetivo de analizar el comportamiento de la señal a medida que el músculo se fatiga. Además, se genera una gráfica para cada segmento obtenido.
 
 ```
 fft_segmentos(segmentos, fs)
@@ -183,7 +183,12 @@ fft_segmentos(segmentos, fs)
 def calcular_media_segmentos(segmentos):
     for i, segmento in enumerate(segmentos):
         media = np.mean(segmento)
-        print(f'Media del Segmento {i+1}: {media}')
+        mediana = np.median(segmento)
+        desviacion_std = np.std(segmento)
+        print(f'Segmento {i+1}:')
+        print(f'   Media: {media}')
+        print(f'   Mediana: {mediana}')
+        print(f'   Desviación estándar: {desviacion_std}\n')
 
 def graficar_segmentos(segmentos, fs):
     plt.figure(figsize=(12, 8), facecolor='blanchedalmond')
