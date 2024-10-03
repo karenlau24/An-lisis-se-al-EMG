@@ -208,7 +208,6 @@ def graficar_segmentos(segmentos, fs):
 
  	
 ## Resultados
----
 
 > Filtrado de la señal
 
@@ -254,6 +253,31 @@ Finalmente, la siguiente figura presenta una representación gráfica de cada se
 </div>
 
 <br/>
+
+> Media de los segmentos
+
+Tras realizar el cálculo de la media de los segmentos, la cual, es capaz de brindarnos información en cuanto a la fátiga muscular, se obtiene lo siguiente: 
+
+```
+
+Media del Segmento 1: -1.5958475663812007e-05
+
+Media del Segmento 2: 3.2903944289091065e-06
+
+Media del Segmento 3: -1.8065319725535814e-07
+
+Media del Segmento 4: 3.7231086002032916e-06
+
+Media del Segmento 5: 2.2974969377265e-06
+
+Media del Segmento 6: 3.941949630928005e-06
+
+Media del Segmento 7: 3.0792984529691326e-07
+
+```
+Al comparar la media del segmento tres con su espectro de frecuencia, se observa una concordancia significativa, lo que sugiere una disminución en la actividad muscular, posiblemente debido a la fatiga. No obstante, este patrón se revierte en el segmento cuatro, donde se aprecia un incremento en la media, indicando una recuperación parcial de la fuerza de contracción. Esto podría explicarse por una disminución momentánea en la fuerza ejercida por el sujeto durante la adquisición de los datos del segmento tres. 
+
+Tal como se indicó previamente, el sujeto no experimentó fatiga muscular durante el periodo de análisis. Este resultado puede atribuirse a la reducida resistencia ofrecida por la pelota anti estrés, la cual no generó una carga de trabajo suficiente para inducir fatiga muscular en el brazo durante el tiempo de adquisición de los datos.
 
 ### Aplicaciones
 
